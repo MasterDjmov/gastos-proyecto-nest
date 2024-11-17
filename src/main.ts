@@ -5,6 +5,12 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  //activando cors, para poder enviar y recibir de dominios/puertos diferentes
+  app.enableCors({
+    origin: 'http://localhost:5173', // Permite las solicitudes del frontend react
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true, // Permite el envío de cookies
+  });
 
   /*Agrego swagger */
   const config = new DocumentBuilder()
