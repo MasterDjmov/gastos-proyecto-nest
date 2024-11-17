@@ -14,8 +14,6 @@ export class Usuario {
     @Column()
     email: string;
 
-    @Column()
-    password: string;
 
     @Column({nullable: true})   //permito null
     foto: string
