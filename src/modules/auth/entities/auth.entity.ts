@@ -1,1 +1,6 @@
-export class Auth {}
+import { Entity } from "typeorm";
+
+@Entity()
+export class Auth {
+
+}
