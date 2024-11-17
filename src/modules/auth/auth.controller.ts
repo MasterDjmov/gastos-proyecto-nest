@@ -3,6 +3,8 @@ import { AuthService } from './auth.service';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { LoginAuthDto } from './dto/login-auth.dto';
+
 
 @ApiTags('auth')
 @Controller('auth')
@@ -33,4 +35,14 @@ export class AuthController {
   remove(@Param('id') id: string) {
     return this.authService.remove(+id);
   }
+
+  @Post('login')
+  loginUser(@Body() loginObject: LoginAuthDto){
+    console.log({body: loginObject})
+    return this.authService.login(loginObject);
+  }
+
+  
 }
+
+
