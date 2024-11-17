@@ -8,7 +8,13 @@ import { CategoriasModule } from './modules/categorias/categorias.module';
 import { InformesModule } from './modules/informes/informes.module';
 
 @Module({
-  imports: [AuthModule, UsuariosModule, GastosModule, CategoriasModule, InformesModule],
+  imports: [
+    AuthModule,
+    UsuariosModule,
+    GastosModule,
+    CategoriasModule,
+    InformesModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
