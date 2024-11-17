@@ -9,6 +9,14 @@ import { ApiTags } from '@nestjs/swagger';
 export class UsuariosController {
   constructor(private readonly usuariosService: UsuariosService) {}
 
+  @Post('register')
+  registerUser(@Body() userObject: CreateUsuarioDto){
+    //aqui lo convierto o encripto
+    console.log({body: userObject})
+    return this.usuariosService.register(userObject);
+    
+  }
+
   @Post()
   create(@Body() createUsuarioDto: CreateUsuarioDto) {
     return this.usuariosService.create(createUsuarioDto);
