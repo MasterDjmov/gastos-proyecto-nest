@@ -8,13 +8,14 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class UsuariosService {
   constructor(@InjectRepository(Usuario) private usuarioRepositorio: Repository<Usuario>){}
-  
+
   create(createUsuarioDto: CreateUsuarioDto) {
     return 'This action adds a new usuario';
   }
 
   findAll() {
-    return `This action returns all usuarios`;
+    return this.usuarioRepositorio.find({});
+    //return `This action returns all usuarios`;
   }
 
   findOne(id: number) {
