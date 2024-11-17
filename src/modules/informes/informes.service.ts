@@ -1,9 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { CreateInformeDto } from './dto/create-informe.dto';
 import { UpdateInformeDto } from './dto/update-informe.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Informe } from './entities/informe.entity';
 
 @Injectable()
 export class InformesService {
+  constructor(@InjectRepository(Informe) private usuarioRepositorio: Repository<Informe>){}
+  
   create(createInformeDto: CreateInformeDto) {
     return 'This action adds a new informe';
   }
