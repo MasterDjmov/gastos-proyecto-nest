@@ -7,7 +7,7 @@ import { Informe } from './entities/informe.entity';
 
 @Injectable()
 export class InformesService {
-  constructor(@InjectRepository(Informe) private usuarioRepositorio: Repository<Informe>){}
+  constructor(@InjectRepository(Informe) private informeRepositorio: Repository<Informe>){}
   
   create(createInformeDto: CreateInformeDto) {
     return 'This action adds a new informe';

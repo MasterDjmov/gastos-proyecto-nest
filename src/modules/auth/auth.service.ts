@@ -10,7 +10,7 @@ import { LoginAuthDto } from './dto/login-auth.dto';
 
 @Injectable()
 export class AuthService {
-  constructor(@InjectRepository(Auth) private usuarioRepositorio: Repository<Auth>,private jwtService: JwtService){}
+  constructor(@InjectRepository(Auth) private authRepositorio: Repository<Auth>,private jwtService: JwtService){}
 
   create(createAuthDto: CreateAuthDto) {
     return 'This action adds a new auth';
@@ -36,7 +36,7 @@ export class AuthService {
     //aqui valido y uso token
     //primero consulto si existe
     const { email, password } =  userObject;
-    const findUser = await this.authRepository.findOne({
+    const findUser = await this.authRepositorio.findOne({
       where: {email}
     });
 
@@ -53,7 +53,7 @@ export class AuthService {
     }
 
     //si todo va bien
-    const payload = {id: findUser.id, name: findUser.name};
+    const payload = {id: findUser.id, email: findUser.email};
 
     const token = await this.jwtService.sign(payload);
     const data = {
@@ -64,4 +64,6 @@ export class AuthService {
 
     return data;
   }
+
+  
 }

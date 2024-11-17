@@ -7,7 +7,7 @@ import { Gasto } from './entities/gasto.entity';
 
 @Injectable()
 export class GastosService {
-  constructor(@InjectRepository(Gasto) private usuarioRepositorio: Repository<Gasto>){}
+  constructor(@InjectRepository(Gasto) private gastoRepositorio: Repository<Gasto>){}
 
   create(createGastoDto: CreateGastoDto) {
     return 'This action adds a new gasto';

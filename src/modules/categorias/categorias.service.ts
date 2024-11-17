@@ -7,7 +7,7 @@ import { Categoria } from './entities/categoria.entity';
 
 @Injectable()
 export class CategoriasService {
-  constructor(@InjectRepository(Categoria) private usuarioRepositorio: Repository<Categoria>){}
+  constructor(@InjectRepository(Categoria) private categoriaRepositorio: Repository<Categoria>){}
 
   create(createCategoriaDto: CreateCategoriaDto) {
     return 'This action adds a new categoria';

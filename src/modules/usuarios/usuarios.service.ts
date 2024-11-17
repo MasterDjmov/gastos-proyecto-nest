@@ -4,7 +4,7 @@ import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Usuario } from './entities/usuario.entity';
 import { Repository } from 'typeorm';
-
+import {hash} from 'bcrypt'
 @Injectable()
 export class UsuariosService {
   constructor(@InjectRepository(Usuario) private usuarioRepositorio: Repository<Usuario>){}
@@ -29,5 +29,17 @@ export class UsuariosService {
 
   remove(id: number) {
     return `This action removes a #${id} usuario`;
+  }
+
+  async register(userObject: CreateUsuarioDto){
+    const { password } = userObject; //texto plano
+    const plainToHash =  await hash(password,10);
+    userObject = {...userObject,password: plainToHash};
+    const auth = this.usuarioRepositorio.create(userObject);
+    this.usuarioRepositorio.save(auth);
+    return {
+      message: "Se registro correctamente el usuario",
+      auth
+    }
   }
 }
