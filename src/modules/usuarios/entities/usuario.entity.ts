@@ -12,7 +12,7 @@ export class Usuario {
     @Column()
     apellido: string;
 
-    @Column()
+    @Column({ unique: true })
     email: string;
 
     @Column({nullable: true})   //permito null
