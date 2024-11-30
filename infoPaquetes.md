@@ -21,3 +21,12 @@ npm install --save @nestjs/jwt passport-jwt
 npm install --save-dev @types/passport-jwt
 npm install @nestjs/passport passport passport-jwt
 npm install bcrypt --save
+
+
+recordar, para el proyecto o hago
+nest generate module usuarios
+nest generate service usuarios
+nest generate controller usuarios
+nest generate class usuarios/entities/usuario.entity --no-spec
+
+o puedo usar resource y nombre del recurso, y me arma todo el circuito de crud básico
