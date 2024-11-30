@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Usuario } from "src/modules/usuarios/entities/usuario.entity";
+import { Column, CreateDateColumn, Entity, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Gasto {
@@ -22,4 +23,7 @@ export class Gasto {
 
     @UpdateDateColumn({type: 'timestamp'})  //automatico
     updated_at: Date;
+
+    @ManyToMany(()=>Usuario, (usuario)=>usuario.gastos,{onDelete:'CASCADE'})
+    usuario: Usuario;
 }
