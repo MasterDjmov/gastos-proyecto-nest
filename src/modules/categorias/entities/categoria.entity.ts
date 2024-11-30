@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Gasto } from "src/modules/gastos/entities/gasto.entity";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Categoria {
@@ -16,4 +17,7 @@ export class Categoria {
 
     @UpdateDateColumn({type: 'timestamp'})  //automatico
     updated_at: Date;
+
+    @OneToMany(()=> Gasto, (gasto)=> gasto.categoria)
+    gastos: Gasto[];
 }
