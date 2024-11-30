@@ -16,7 +16,7 @@ export class Gasto {
     @Column()
     fecha: Date;
 
-    @Column()
+    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
     categoria_id: number;
 
     @CreateDateColumn({type: 'timestamp'})  //automatico
